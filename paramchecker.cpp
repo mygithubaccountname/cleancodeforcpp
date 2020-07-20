@@ -1,6 +1,10 @@
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
   //int i;
+  bool bloodPressureIsOk(float);
+  bool oxygenationIsOk(float);
+  bool respirationIsOk(float);
+  
   bool bloodPressureStatus, oxygenationStatus, respiratoryStatus;
   
   bloodPressureStatus = bloodPressureIsOk(bpm);
