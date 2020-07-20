@@ -1,3 +1,4 @@
+/*
 class Point {
 private:
     int x;
@@ -9,3 +10,4 @@ public:
     inline void setX(int x) { this->x = x; }
     inline void setY(int y) { this->y = y; }
 };
+*/
