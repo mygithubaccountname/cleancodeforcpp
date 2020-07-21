@@ -15,11 +15,21 @@ class parameter{
 };
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
+   bool result;
+   
+   initialize();
+   result = checkVitials();    
+   
+   return result;
+}
 
+void initialize(){   
   parameter bloodPressure(70, 150);
   parameter oxygenation(80, 100);
   parameter respiration(30, 60);
-    
+}
+
+bool checkVitials(){
   bool bloodPressureStatus, oxygenationStatus, respiratoryStatus;
   
   bloodPressureStatus = bloodPressure.isWithinLimits(bpm);
