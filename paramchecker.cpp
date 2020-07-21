@@ -1,6 +1,6 @@
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  //int i;
+  
   bool bloodPressureIsOk(float);
   bool oxygenationIsOk(float);
   bool respirationIsOk(float);
@@ -11,11 +11,7 @@ bool vitalsAreOk(float bpm, float spo2, float respRate) {
   oxygenationStatus = oxygenationIsOk(spo2);
   respiratoryStatus = respirationIsOk(respRate);
   
-  if (!bloodPressureStatus || !oxygenationStatus || !respiratoryStatus) {
-  return false;
-  }
-  else {
-  return true; }
+  return (bloodPressureStatus && oxygenationStatus && respiratoryStatus);
 }
 
 bool bloodPressureIsOk(float bpm) {
