@@ -18,7 +18,7 @@ bool vitalsAreOk(float bpm, float spo2, float respRate) {
    bool result;
    
    initialize();
-   result = checkVitials();    
+   result = checkVitals(bpm, spo2, respRate);    
    
    return result;
 }
@@ -29,7 +29,7 @@ void initialize(){
   parameter respiration(30, 60);
 }
 
-bool checkVitials(){
+bool checkVitals(float bpm, float spo2, float respRate){
   bool bloodPressureStatus, oxygenationStatus, respiratoryStatus;
   
   bloodPressureStatus = bloodPressure.isWithinLimits(bpm);
