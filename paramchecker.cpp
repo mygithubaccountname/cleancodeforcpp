@@ -7,7 +7,7 @@ class parameter{
         parameter(float lower, float upper): lowerLimit(lower), upperLimit(upper){ }
   
         bool isWithinLimits(float param){
-        if (lowerLimit < param < upperLimit)
+        if ((lowerLimit < param) && (param < upperLimit))
           return true;
         else
           return false;
