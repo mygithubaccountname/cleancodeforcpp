@@ -1,3 +1,6 @@
+void initialize();
+bool vitalsAreOk(float, float, float);
+
 class parameter{
    private:
         float lowerLimit;
