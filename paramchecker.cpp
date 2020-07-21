@@ -1,16 +1,31 @@
-void initialize();
-bool checkVitals(float, float, float);
+void initializeLimits(parameter*);
+void setReading(parameter*, float, float, float);
+bool checkVitals(parameter*);
 
 class parameter{
    private:
         float lowerLimit;
         float upperLimit;  
-
+        float paramValue;
+   
     public:
-        parameter(float lower, float upper): lowerLimit(lower), upperLimit(upper){ }
-  
-        bool isWithinLimits(float param){
-        if ((lowerLimit <= param) && (param <= upperLimit))
+       parameter(): lowerLimit(0), upperLimit(100), paramValue(50) { } 
+        
+        void setValue(float value){
+           paramValue = value
+        }
+        
+        float getValue(){
+           return paramValue;
+        }
+   
+        void setLimits(float lower, float upper){
+           lowerLimit = lower;
+           upperLimit = upper;
+        }
+        
+        bool isWithinLimits(){
+        if ((lowerLimit <= paramValue) && (paramValue <= upperLimit))
           return true;
         else
           return false;
@@ -19,25 +34,34 @@ class parameter{
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
    bool result;
+   parameter parameterList[3];
    
-   initialize();
-   result = checkVitals(bpm, spo2, respRate);    
+   initializeLimits(parameterList);
+   setReading(parameterList, bpm, spo2, respRate);
+   
+   result = checkVitals(parameterList);    
    
    return result;
 }
 
-void initialize(){   
-  parameter bloodPressure(70, 150);
-  parameter oxygenation(80, 100);
-  parameter respiration(30, 60);
+void initializeLimits(parameter* list){
+  list[0].setLimits(70, 150);
+  list[1].setLimits(80, 100);
+  list[2].setLimits(30, 60);
 }
 
-bool checkVitals(float bpm, float spo2, float respRate){
+void setReading(parameter* list, float bpm, float spo2, float respRate){
+  list[0].setValue(bpm);
+  list[1].setValue(spo2);
+  list[2].setValue(respRate);
+}
+
+bool checkVitals(parameter* list){
   bool bloodPressureStatus, oxygenationStatus, respiratoryStatus;
   
-  bloodPressureStatus = bloodPressure.isWithinLimits(bpm);
-  oxygenationStatus = oxygenation.isWithinLimits(spo2);
-  respiratoryStatus = respiration.isWithinLimits(respRate);
+  bloodPressureStatus = list[0].isWithinLimits();
+  oxygenationStatus = list[1].isWithinLimits();
+  respiratoryStatus = list[2].isWithinLimits();
   
   return (bloodPressureStatus && oxygenationStatus && respiratoryStatus);
 }
