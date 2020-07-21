@@ -17,7 +17,7 @@ class parameter{
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
 
   parameter bloodPressure(70, 150);
-  parameter oxygenation(0, 80);
+  parameter oxygenation(80, 100);
   parameter respiration(30, 60);
     
   bool bloodPressureStatus, oxygenationStatus, respiratoryStatus;
