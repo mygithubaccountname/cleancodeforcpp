@@ -1,5 +1,5 @@
 void initialize();
-bool vitalsAreOk(float, float, float);
+bool checkVitals(float, float, float);
 
 class parameter{
    private:
