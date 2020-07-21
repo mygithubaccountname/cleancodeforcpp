@@ -1,36 +1,30 @@
+class parameter{
+   private:
+        float lowerLimit;
+        float upperLimit;  
+
+    public:
+        parameter(float lower, float upper): lowerLimit(lower), upperLimit(upper){ }
+  
+        bool isWithinLimits(float param){
+        if (lowerLimit < param < upperLimit)
+          return true;
+        else
+          return false;
+        }
+};
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  
-  bool bloodPressureIsOk(float);
-  bool oxygenationIsOk(float);
-  bool respirationIsOk(float);
-  
+
+  parameter bloodPressure(70, 150);
+  parameter oxygenation(0, 80);
+  parameter respiration(30, 60);
+    
   bool bloodPressureStatus, oxygenationStatus, respiratoryStatus;
   
-  bloodPressureStatus = bloodPressureIsOk(bpm);
-  oxygenationStatus = oxygenationIsOk(spo2);
-  respiratoryStatus = respirationIsOk(respRate);
+  bloodPressureStatus = bloodPressure.isWithinLimits(bpm);
+  oxygenationStatus = oxygenation.isWithinLimits(spo2);
+  respiratoryStatus = respiration.isWithinLimits(respRate);
   
   return (bloodPressureStatus && oxygenationStatus && respiratoryStatus);
-}
-
-bool bloodPressureIsOk(float bpm) {
-  if(bpm < 70 || bpm > 150) {
-    return false;
-  }
-  return true;
-}
-
-bool oxygenationIsOk(float spo2) {
-  if(spo2 < 80) {
-    return false;
-  }
-  return true;
-}
-
-bool respirationIsOk(float respRate) {
-  if(respRate < 30 || respRate > 60) {
-    return false;
-  }
-  return true;
 }
