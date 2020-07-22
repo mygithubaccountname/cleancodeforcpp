@@ -7,6 +7,7 @@ class reading{
       float limitRange[10][2] = {70,50,80,100,30,60};
 
    public:
+      reading(): limitRange(70,50,80,100,30,60){ }
       bool isReadingWithinLimits(float reading, int index){
       if ((limitRange[index][0] <= reading) && (reading <= limitRange[index][1]))
           return true;
@@ -21,7 +22,7 @@ class parameter{
         int paramIndex;
         reading chart; 
     public:
-     
+     parameter(): paramValue(0), paramIndex(0){ }
         void setValue(float value, int index){
            paramValue = value ;
            paramIndex = index ;
