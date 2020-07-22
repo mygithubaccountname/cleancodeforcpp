@@ -32,22 +32,18 @@ class parameter{
 
 
 void initializeLimits(parameter*);
-void setReading(parameter*, float, float, float);
+void setReading(parameter*, vitals*);
 bool checkVitals(parameter*);
 
 bool vitalsAreOk(vitals* vitalReadings) {
-   bool result;
+   bool testResult;
    parameter parameterList[3];
    
    initializeLimits(parameterList);
-   parameterList[0].setValue(vitalReadings->bpm);
-   parameterList[1].setValue(vitalReadings->spo2);
-   parameterList[2].setValue(vitalReadings->respRate);
-   //setReading(parameterList, bpm, spo2, respRate);
+   setReading(parameterList, vitalReadings);
+   testResult = checkVitals(parameterList);    
    
-   result = checkVitals(parameterList);    
-   
-   return result;
+   return testResult;
 }
 
 void initializeLimits(parameter* list){
@@ -55,13 +51,13 @@ void initializeLimits(parameter* list){
   list[1].setLimits(80, 100);
   list[2].setLimits(30, 60);
 }
-/*
-void setReading(parameter* list, float bpm, float spo2, float respRate){
-  list[0].setValue(bpm);
-  list[1].setValue(spo2);
-  list[2].setValue(respRate);
+
+void setReading(parameter* list, vitals* vitalReadings){
+  list[0].setValue(vitalReadings->bpm);
+  list[1].setValue(vitalReadings->spo2);
+  list[2].setValue(vitalReadings->respRate);
 }
-*/
+
 bool checkVitals(parameter* list){
   bool vitalStatus = true; 
 
