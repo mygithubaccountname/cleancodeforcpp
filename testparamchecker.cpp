@@ -1,6 +1,7 @@
 #include "paramchecker.h"
 #include <gtest/gtest.h>
- 
+vitals vitalReading;
+
 TEST(VitalsTest, BPM) { 
     vitalReading.bpm = 100;
     vitalReading.spo2 = 100;
