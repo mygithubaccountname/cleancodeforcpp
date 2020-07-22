@@ -62,7 +62,7 @@ bool vitalsAreOk(vitals* vitalReadings) {
    
    setReading(parameterList, vitalReadings);
   
-   testResult = checkVitals(parameterList, vitalReadings.numberOfParmeters);    
+   testResult = checkVitals(parameterList, vitalReadings->numberOfParmeters);    
    
    return testResult;
 }
