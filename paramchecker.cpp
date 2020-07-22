@@ -47,7 +47,7 @@ bool vitalsAreOk(vitals* vitalReadings) {
 }
 
 void setReading(parameter* list, vitals* vitalReadings){
-   for (int loopVariable = 0; loopVariable < vitalReading.numberOfParmeters; loopVariable++) {
+   for (int loopVariable = 0; loopVariable < vitalReadings.numberOfParmeters; loopVariable++) {
       list[loopVariable].setValue(vitalReadings->vital[loopVariable]);
    }
 }
