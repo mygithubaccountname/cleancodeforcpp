@@ -1,69 +1,77 @@
 #include "paramchecker.h"
 
+
+
+class reading{
+   private:
+      float limitRange[10][2] = {70,50,80,100,30,60};
+   public:
+/*
+   void initializeLimitRange{
+      limitRange[0][0] = 70;
+      limitRange[0][1] = 50;
+      limitRange[1][0] = 80;
+      limitRange[1][1] = 100;
+      limitRange[2][0] = 30;
+      limitRange[2][1] = 60;
+      }
+*/      
+      bool isReadingWithinLimits(float reading, int index){
+      if ((this.limitRange[index][0] <= reading) && (reading <= this.limitRange[index][1]))
+          return true;
+      else
+          return false;
+      }  
+}
+
 class parameter{
    private:
-        float lowerLimit;
-        float upperLimit;  
         float paramValue;
-   
+        int paramIndex;
+        reading chart; 
     public:
-       parameter(): lowerLimit(0), upperLimit(100), paramValue(50) { } 
-        
-        void setValue(float value){
+     
+        void setValue(float value, int index){
            paramValue = value ;
+           paramIndex = index ;
         }
         
         float getValue(){
            return paramValue;
         }
-   
-        void setLimits(float lower, float upper){
-           lowerLimit = lower;
-           upperLimit = upper;
-        }
         
         bool isWithinLimits(){
-        if ((lowerLimit <= paramValue) && (paramValue <= upperLimit))
-          return true;
-        else
-          return false;
+            return chart.isReadingWithinLimits(paramValue, index);
         }
 };
-
-
 void setReading(parameter*, vitals*);
-void setLimits(parameter*);
+
 bool checkVitals(parameter*);
 
-bool vitalsAreOk(vitals* vitalReadings) {
-   bool testResult;
-   parameter parameterList[10];
-   
-   setReading(parameterList, vitalReadings);
-   setLimits(parameterList);
-   testResult = checkVitals(parameterList);    
-   
-   return testResult;
-}
-
 void setReading(parameter* list, vitals* vitalReadings){
-   for (int loopVariable = 0; loopVariable < vitalReadings->numberOfParmeters; loopVariable++) {
-      list[loopVariable].setValue(vitalReadings->vital[loopVariable]);
+   for (int index = 0; index < vitalReadings->numberOfParmeters; index++) {
+      list[index].setValue(vitalReadings->vital[index], index);
    }
 }
 
-bool checkVitals(parameter* list){
+bool checkVitals(parameter* list, int numberOfParams){
   bool vitalStatus = true; 
 
-  for (int loopvariable = 0; loopvariable < 3 ; loopvariable++) {
+  for (int loopvariable = 0; loopvariable < numberOfParams ; loopvariable++) {
      vitalStatus &= list[loopvariable].isWithinLimits();
   }
 
    return vitalStatus;
 }
 
-void setLimits(parameter* list){
-  list[0].setLimits(70, 150);
-  list[1].setLimits(80, 100);
-  list[2].setLimits(30, 60);
+
+bool vitalsAreOk(vitals* vitalReadings) {
+   bool testResult;
+   parameter parameterList[10];
+   
+   setReading(parameterList, vitalReadings);
+  
+   testResult = checkVitals(parameterList, vitalReadings.numberOfParmeters);    
+   
+   return testResult;
 }
