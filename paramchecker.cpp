@@ -5,24 +5,15 @@
 class reading{
    private:
       float limitRange[10][2] = {70,50,80,100,30,60};
+
    public:
-/*
-   void initializeLimitRange{
-      limitRange[0][0] = 70;
-      limitRange[0][1] = 50;
-      limitRange[1][0] = 80;
-      limitRange[1][1] = 100;
-      limitRange[2][0] = 30;
-      limitRange[2][1] = 60;
-      }
-*/      
       bool isReadingWithinLimits(float reading, int index){
-      if ((this.limitRange[index][0] <= reading) && (reading <= this.limitRange[index][1]))
+      if ((limitRange[index][0] <= reading) && (reading <= limitRange[index][1]))
           return true;
       else
           return false;
       }  
-}
+};
 
 class parameter{
    private:
@@ -41,7 +32,7 @@ class parameter{
         }
         
         bool isWithinLimits(){
-            return chart.isReadingWithinLimits(paramValue, index);
+            return chart.isReadingWithinLimits(paramValue, paramIndex);
         }
 };
 void setReading(parameter*, vitals*);
