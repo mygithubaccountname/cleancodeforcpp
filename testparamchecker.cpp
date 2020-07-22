@@ -3,16 +3,16 @@
 vitals vitalReading;
 
 TEST(VitalsTest, BPM) { 
-    vitalReading.bpm = 100;
-    vitalReading.spo2 = 100;
-    vitalReading.respRate = 50;
+    vitalReading.vital[0] = 100; //bpm
+    vitalReading.vital[1] = 100; //spo2
+    vitalReading.vital[2] = 50; //respRate
     ASSERT_EQ(true, vitalsAreOk(&vitalReading));
 }
  
 TEST(VitalsTest, SPO2) {
-     vitalReading.bpm = 100;
-    vitalReading.spo2 = 40;
-    vitalReading.respRate = 50;
+    vitalReading.vital[0] = 100; //bpm
+    vitalReading.vital[1] = 40; //spo2
+    vitalReading.vital[2] = 50; //respRate
     ASSERT_EQ(false, vitalsAreOk(&vitalReading));
 }
  
