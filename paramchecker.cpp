@@ -58,17 +58,10 @@ void setReading(parameter* list, float bpm, float spo2, float respRate){
 
 bool checkVitals(parameter* list){
   bool vitalStatus = true; 
-  //bool bloodPressureStatus, oxygenationStatus, respiratoryStatus;
-  
-  for (int i = 0; i < 3 ; i++) {
-     vitalStatus &= list[i].isWithinLimits();
+
+  for (int loopvariable = 0; loopvariable < 3 ; loopvariable++) {
+     vitalStatus &= list[loopvariable].isWithinLimits();
   }
-  /* 
-  bloodPressureStatus = list[0].isWithinLimits();
-  oxygenationStatus = list[1].isWithinLimits();
-  respiratoryStatus = list[2].isWithinLimits();
-  
-  return (bloodPressureStatus && oxygenationStatus && respiratoryStatus);
-  */
+
    return vitalStatus;
 }
