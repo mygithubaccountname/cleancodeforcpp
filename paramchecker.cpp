@@ -7,7 +7,7 @@ class reading{
       float limitRange[10][2] = {70,50,80,100,30,60};
 
    public:
-      reading(): { }
+      reading(): limitRange(0){ }
       bool isReadingWithinLimits(float reading, int index){
       if ((limitRange[index][0] <= reading) && (reading <= limitRange[index][1]))
           return true;
