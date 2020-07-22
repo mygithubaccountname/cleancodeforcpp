@@ -1,5 +1,5 @@
 struct vitals{
-  float vital[];
+  float vital[10];
   int numberOfParmeters;
 };
 
