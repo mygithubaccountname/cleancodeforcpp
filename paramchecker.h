@@ -1,7 +1,6 @@
 struct vitals{
-  float bpm;
-  float spo2;
-  float respRate;
+  float vital[];
+  int numberOfParmeters;
 };
 
 bool vitalsAreOk(vitals* vitalReading);
