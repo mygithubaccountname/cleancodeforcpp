@@ -1,7 +1,3 @@
-void initializeLimits(parameter*);
-void setReading(parameter*, float, float, float);
-bool checkVitals(parameter*);
-
 class parameter{
    private:
         float lowerLimit;
@@ -12,7 +8,7 @@ class parameter{
        parameter(): lowerLimit(0), upperLimit(100), paramValue(50) { } 
         
         void setValue(float value){
-           paramValue = value
+           paramValue = value ;
         }
         
         float getValue(){
@@ -31,6 +27,10 @@ class parameter{
           return false;
         }
 };
+
+void initializeLimits(parameter*);
+void setReading(parameter*, float, float, float);
+bool checkVitals(parameter*);
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
    bool result;
