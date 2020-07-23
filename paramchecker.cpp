@@ -4,14 +4,14 @@
 
 class reading{
    private:
-      float limitRange[10][2] = {70,50,80,100,30,60};
+      float limitRange[10][2];
 
    public:
       reading(): limitRange(){ }
       
       void setLimits() {
-         limitRange[0][0] = 70;
-         limitRange[0][1] = 50;
+         limitRange[0][0] = 50;
+         limitRange[0][1] = 70;
          limitRange[1][0] = 80;
          limitRange[1][1] = 100;
          limitRange[2][0] = 30;
