@@ -29,8 +29,9 @@ class parameter{
    private:
         float paramValue;
         int paramIndex;
-        reading chart; 
+        
     public:
+     reading chart; 
      parameter(): paramValue(0), paramIndex(0){ }
         void setValue(float value, int index){
            paramValue = value ;
