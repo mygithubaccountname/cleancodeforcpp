@@ -2,12 +2,12 @@
 
 
 
-class reading{
+class parameters{
    private:
       float limitRange[10][2];
 
    public:
-      reading(): limitRange(){ }
+      parameters(): limitRange(){ }
       
       void setLimits() {
          limitRange[0][0] = 50;
@@ -25,14 +25,14 @@ class reading{
       }  
 };
 
-class parameter{
+class reading{
    private:
         float paramValue;
         int paramIndex;
         
     public:
-     reading chart; 
-     parameter(): paramValue(0), paramIndex(0){ }
+     parameters thresholds; 
+     reading(): paramValue(0), paramIndex(0){ }
         void setValue(float value, int index){
            paramValue = value ;
            paramIndex = index ;
@@ -43,22 +43,22 @@ class parameter{
         }
         
         bool isWithinLimits(){
-            return chart.isReadingWithinLimits(paramValue, paramIndex);
+            return thresholds.isReadingWithinLimits(paramValue, paramIndex);
         }
 };
-void setReading(parameter*, vitals*);
+void setReading(reading*, vitals*);
 
-bool checkVitals(parameter*);
+bool checkVitals(reading*);
 
-void setReading(parameter* list, vitals* vitalReadings){
+void setReading(reading* list, vitals* vitalReadings){
    for (int index = 0; index < vitalReadings->numberOfParmeters; index++) {
       list[index].setValue(vitalReadings->vital[index], index);
-      list[index].chart.setLimits();
+      list[index].thresholds.setLimits();
    }
    
 }
 
-bool checkVitals(parameter* list, int numberOfParams){
+bool checkVitals(reading* list, int numberOfParams){
   bool vitalStatus = true; 
 
   for (int loopvariable = 0; loopvariable < numberOfParams ; loopvariable++) {
@@ -71,11 +71,11 @@ bool checkVitals(parameter* list, int numberOfParams){
 
 bool vitalsAreOk(vitals* vitalReadings) {
    bool testResult;
-   parameter parameterList[10];
+   reading chart[10];
    
-   setReading(parameterList, vitalReadings);
+   setReading(chart, vitalReadings);
   
-   testResult = checkVitals(parameterList, vitalReadings->numberOfParmeters);    
+   testResult = checkVitals(chart, vitalReadings->numberOfParmeters);    
    
    return testResult;
 }
