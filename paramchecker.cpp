@@ -53,7 +53,7 @@ bool checkVitals(parameter*);
 void setReading(parameter* list, vitals* vitalReadings){
    for (int index = 0; index < vitalReadings->numberOfParmeters; index++) {
       list[index].setValue(vitalReadings->vital[index], index);
-      list[index]->chart.setLimits();
+      list[index].chart.setLimits();
    }
    
 }
