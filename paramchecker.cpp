@@ -8,11 +8,13 @@ class reading{
 
    public:
       reading(): limitRange(){ }
+      
       bool isReadingWithinLimits(float reading, int index){
-      if ((limitRange[index][0] <= reading) && (reading <= limitRange[index][1]))
-          return true;
-      else
-          return false;
+          limitRange = {70,50,80,100,30,60};
+          if ((limitRange[index][0] <= reading) && (reading <= limitRange[index][1]))
+              return true;
+          else
+              return false;
       }  
 };
 
