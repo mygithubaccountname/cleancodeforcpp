@@ -9,8 +9,15 @@ class reading{
    public:
       reading(): limitRange(){ }
       
+      void setLimits() {
+         limitRange[0][0] = 70;
+         limitRange[0][1] = 50;
+         limitRange[1][0] = 80;
+         limitRange[1][1] = 100;
+         limitRange[2][0] = 30;
+         limitRange[2][1] = 60;
+      }
       bool isReadingWithinLimits(float reading, int index){
-          limitRange = {70,50,80,100,30,60};
           if ((limitRange[index][0] <= reading) && (reading <= limitRange[index][1]))
               return true;
           else
@@ -46,6 +53,7 @@ void setReading(parameter* list, vitals* vitalReadings){
    for (int index = 0; index < vitalReadings->numberOfParmeters; index++) {
       list[index].setValue(vitalReadings->vital[index], index);
    }
+   list.chart.setLimits();
 }
 
 bool checkVitals(parameter* list, int numberOfParams){
